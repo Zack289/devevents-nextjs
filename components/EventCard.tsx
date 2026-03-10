@@ -13,7 +13,7 @@ interface Props {
   time: string;
 }
 
-const EventCard = ({ title, image, slug, location, date }: Props) => {
+const EventCard = ({ title, image, slug, location, date, time }: Props) => {
   const handleClick = () => {
     posthog.capture("event_card_clicked", {
       event_title: title,
@@ -24,10 +24,27 @@ const EventCard = ({ title, image, slug, location, date }: Props) => {
   };
 
   return (
-    <Link href={`/events`} id="event-card" onClick={handleClick}>
+    <Link href={`/events/${slug}`} id="event-card" onClick={handleClick}>
       <Image src={image} alt="title" width={410} height={300} />
 
+      <div className="flex flex-row gap-2">
+        <Image src="/icons/pin.svg" alt="location" width={14} height={14} />
+        <p>{location}</p>
+      </div>
+
       <p className="title">{title}</p>
+
+      <div className="datetime">
+        <div>
+          <Image src="/icons/calendar.svg" alt="date" width={14} height={14} />
+          <p>{date}</p>
+        </div>
+
+        <div>
+          <Image src="/icons/clock.svg" alt="time" width={14} height={14} />
+          <p>{time}</p>
+        </div>
+      </div>
     </Link>
   );
 };

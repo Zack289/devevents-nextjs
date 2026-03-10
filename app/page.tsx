@@ -8,10 +8,10 @@ const Home = () => {
     <section>
       <h1 className="text-center">
         {/* eslint-disable-next-line react/no-unescaped-entities */}
-        The Hub for Every Dev <br /> Event You Can't Miss
+        The Hub for Every Dev <br /> Event You Can't Miss.
       </h1>
       <p className="text-center mt-5">
-        Hackathons, Meetups, and Conferences, All in One Place
+        Hackathons, Meetups, and Conferences, All in One Place.
       </p>
 
       <ExploreBtn />
