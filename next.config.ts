@@ -4,6 +4,13 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   experimental:{
     turbopackFileSystemCacheForDev: true
+  },images:{
+    remotePatterns:[
+      {
+        protocol: 'https',
+        hostname: 'rest.clouldinary.com'
+      }
+    ]
   },
   async rewrites() {
     return [
