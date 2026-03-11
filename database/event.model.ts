@@ -110,24 +110,25 @@ const EventSchema = new Schema<IEvent>(
 );
 
 // Pre-save hook for slug generation and data normalization
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-(EventSchema as any).pre('save', function (this: IEvent, next: (err?: Error | null) => void) {
-  // Generate slug only if title changed or document is new
-  if (this.isModified('title') || this.isNew) {
-    this.slug = generateSlug(this.title);
-  }
+EventSchema.pre('save', function (this: IEvent) {
+  try {
+    // Generate slug only if title changed or document is new
+    if (this.isModified('title') || this.isNew) {
+      this.slug = generateSlug(this.title);
+    }
 
-  // Normalize date to ISO format if it's not already
-  if (this.isModified('date')) {
-    this.date = normalizeDate(this.date);
-  }
+    // Normalize date to ISO format if it's not already
+    if (this.isModified('date')) {
+      this.date = normalizeDate(this.date);
+    }
 
-  // Normalize time format (HH:MM)
-  if (this.isModified('time')) {
-    this.time = normalizeTime(this.time);
+    // Normalize time format (HH:MM)
+    if (this.isModified('time')) {
+      this.time = normalizeTime(this.time);
+    }
+  } catch (error) {
+    throw error instanceof Error ? error : new Error(String(error));
   }
-
-  next();
 });
 
 // Helper function to generate URL-friendly slug
