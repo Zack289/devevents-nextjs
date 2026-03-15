@@ -1,13 +1,21 @@
-/* From Uiverse.io by Shoh2008 */ 
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .loader {
   position: relative;
+  width: 0;
+  height: 0;
   border: 24px solid;
-  border-color: red  transparent red transparent;
+  border-color: red transparent red transparent;
   animation: rotate_000 2s linear infinite;
 }
 
 .loader:before,
-      .loader:after {
+.loader:after {
   content: "";
   display: block;
   border: 24px solid transparent;
@@ -27,17 +35,16 @@
 
 @keyframes rotate_000 {
   100% {
-    transform: rotate(360deg)
+    transform: rotate(360deg);
   }
 }
 
 @keyframes prix {
-  20% , 80% {
-    transform: rotate(0)
+  20%, 80% {
+    transform: rotate(0);
   }
 
   50% {
-    transform: rotate(-90deg)
+    transform: rotate(-90deg);
   }
 }
-    
