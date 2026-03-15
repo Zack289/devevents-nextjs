@@ -134,14 +134,15 @@ const EventDetailsPage = async ({
             />
           </section>
 
-          <EventAgenda agendaItems={JSON.parse(agenda[0])} />
+          {/* <EventAgenda agendaItems={JSON.parse(agenda[0])} /> */}
+          <EventAgenda agendaItems={agenda} />
 
           <section className="flex-col-gap-2">
             <h2>About the Organizer</h2>
             <p>{organizer}</p>
           </section>
 
-          <EventTags tags={JSON.parse(tags[0])} />
+          <EventTags tags={tags} />
         </div>
 
         {/* RIGHT SIDE - BOOKING FORM */}
@@ -161,12 +162,12 @@ const EventDetailsPage = async ({
         </aside>
       </div>
 
-      <div className="flex w-full feex-col gap-4 pt-20">
+      <div className="flex w-full flex-col gap-4 pt-20">
         <h2>Similar Events</h2>
         <div className="events">
           {similarEvents.length > 0 &&
             similarEvents.map((similarEvent: IEvent) => (
-              <EventCard key={similarEvent.id} {...similarEvent} />
+              <EventCard key={similarEvent.title} {...similarEvent} />
             ))}
         </div>
       </div>
