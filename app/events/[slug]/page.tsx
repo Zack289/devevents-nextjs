@@ -1,4 +1,5 @@
 import EventDetails from "@/components/EventDetail";
+import Loader from "@/components/Loader";
 import {Suspense} from "react";
 
 
@@ -7,7 +8,7 @@ const EventDetailsPage = async ({ params }: { params: Promise<{ slug: string }>}
 
     return (
         <main>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader />}>
                 <EventDetails params={slug} />
             </Suspense>
         </main>
